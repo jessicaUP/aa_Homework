@@ -30,10 +30,10 @@ class Map
 end 
 
 
-map = Map.new
-map.set("jessica", "uphoff")
-map.set(2, 7)
-p map.show
-p map.get("jessica")
-p map.delete(2)
-p map.show
+map_new = Map.new
+map_new.set("jessica", "uphoff")
+map_new.set(2, 7)
+p map_new.show
+p map_new.get("jessica")
+p map_new.delete(2)
+p map_new.show
