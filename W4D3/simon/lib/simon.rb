@@ -18,10 +18,10 @@ class Simon
   end
 
   def take_turn
-    show_sequence
-    require_sequence
+    self.show_sequence
+    self.require_sequence
     if !self.game_over
-      round_success_message
+      self.round_success_message
       self.sequence_length += 1
     end
   end
@@ -58,3 +58,6 @@ class Simon
     self.seq = []
   end
 end
+
+new_game = Simon.new
+new_game.play
