@@ -29,12 +29,13 @@ describe Dessert do
   end
 
   describe "#add_ingredient" do
-    it "adds an ingredient to the ingredients array"
+    it "adds an ingredient to the ingredients array" do
     expect(dessert.add_ingredient("sugar").ingredients).to eq(["sugar"])
   end
 
   describe "#mix!" do
     it "shuffles the ingredient array"
+    expect(dessert.mix!)
   end
 
   describe "#eat" do
