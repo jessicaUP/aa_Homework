@@ -48,4 +48,62 @@ class Play
         id = ?
     SQL
   end
+
+  def find_by_title(title)
+    raise "#{self} not in database" unless self.id
+    data = PlayDBConnection.instance.execute(<<-SQL, title)
+      SELECT
+       * 
+      FROM
+        play
+      WHERE 
+        title = ?
+      SQL
+        
+  end
+
+  def find_by_playwright(name)
+    raise "#{self} not in database" unless self.id
+    data = PlayDBConnection.instance.execute(<<-SQL, name)
+      SELECT
+       * 
+      FROM
+        play
+      WHERE 
+        name = ?
+    SQL
+  end
+    
+end
+
+# ------------------------------------------------- #
+
+class PlaywrightDBConnection < SQLite3::Database
+  include Singleton
+
+  def initialize
+    super('playwrights.db')
+    self.type_translation = true
+    self.results_as_hash = true
+  end
+end
+
+
+class Playwright
+
+  def self.all
+    data = PlayDBConnection.instance.execute("SELECT * FROM playwrights")
+    data.map { |datum| Playwright.new(datum) }
+  end
+
+  def self.find_by_name(name)
+    raise "#{self} not in database" unless self.id
+    data = PlayDBConnection.instance.execute(<<-SQL, title)
+      SELECT
+       * 
+      FROM
+        play
+      WHERE 
+        title = ?
+      SQL
 end
