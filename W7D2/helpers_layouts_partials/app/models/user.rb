@@ -4,6 +4,7 @@ class User < ApplicationRecord
   # Note the `allow_nil`.
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :password_digest, presence: true
+  validates :email, presence: true
   validates :session_token, presence: true, uniqueness: true
 
   attr_reader :password
